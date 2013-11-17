@@ -71,6 +71,33 @@ def transcode(input_bucket, output_bucket,input_filename,output_filename):
 	else:
 		return -1	
 
+#Method
+# Get pipeline id from the name
+#Input:
+#   pipeline_name: Name of the pipeline name.
+#Output:
+#   Pipeline id
+
+def find_pipeline_id_from_name(given_pipeline_name):
+        et = boto.elastictranscoder.layer1.ElasticTranscoderConnection()
+        dict_from_aws = et.list_pipelines()
+
+#Extract the list from the dict
+        list_from_aws = dict_from_aws['Pipelines']
+
+#Extract the list from the list !
+#Find the number of items in the list.
+        len_inner_list = len(list_from_aws)
+
+#Iterate thro' the array inside the list
+        for index in range(0,len_inner_list):
+                list_from_aws[index]
+                actual_pipeline = list_from_aws[index]
+                pipeline_name = actual_pipeline['Name']
+                pipeline_id = actual_pipeline['Id']
+                if(pipeline_name == given_pipeline_name):
+                        print "Found " + "and id is " + pipeline_id
+                        return(pipeline_id)
 #Main
 retval = create_bucket("sateesh_video_transcode_primary")
 print("Debugging Message 1 : " +str(retval))
