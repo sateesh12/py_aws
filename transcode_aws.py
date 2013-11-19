@@ -1,6 +1,7 @@
 #!/usr/bin/python
 #Author: Sateesh
 #Purpose: Transcode Video  using AWS.
+#License: GPL v2
 
 import boto
 import sys
@@ -128,11 +129,11 @@ def find_pipeline_id_from_name(given_pipeline_name):
 
 
 #Main
-#retval = create_bucket("sateesh_video_transcode_primary")
-#print("Debugging Message 1 : " +str(retval))
+retval = create_bucket("sateesh_video_transcode_primary")
+print("Debugging Message 1 : " +str(retval))
 
-#retval = store_data_into_s3("sateesh_video_transcode_primary", "test","./2013-04-29 22.47.20.mp4")
-#print("Debugging Message 2 : " +str(retval))
+retval = store_data_into_s3("sateesh_video_transcode_primary", "test","./2013-04-29 22.47.20.mp4")
+print("Debugging Message 2 : " +str(retval))
 
 retval = transcode("sateesh_video_transcode_primary","sateesh_video_transcode_primary","test","19_nov_2013_from_script")
 print("Debugging Message 3 : " +str(retval))
